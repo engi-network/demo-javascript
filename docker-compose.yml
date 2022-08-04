@@ -7,9 +7,13 @@ services:
     volumes:
       # share the source code for live reloading
       - .:/code
-      # bind mount /tmp from the host to share the output of pytest
+      # prevent the host's node_modules from being mounted in the container
+      - exclude:/code/node_modules
+      # bind mount /tmp from the host to share the output of Jest
       - type: bind
         source: ${TMPDIR}
         target: ${TMPDIR}
     environment:
       - TMPDIR=/tmp
+volumes:
+  exclude:
