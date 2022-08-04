@@ -3,7 +3,7 @@ version: "3.9"
 services:
   tests:
     build: .
-    command: npm test -- --json >${TMPDIR}/jest.json
+    command: ./run.sh
     volumes:
       # share the source code for live reloading
       - .:/code
@@ -11,3 +11,5 @@ services:
       - type: bind
         source: ${TMPDIR}
         target: ${TMPDIR}
+    environment:
+      - TMPDIR=/tmp
