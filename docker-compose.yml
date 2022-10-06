@@ -3,7 +3,7 @@ version: "3.9"
 services:
   tests:
     build: .
-    command: /bin/sh -c "./node_modules/.bin/jest --json | tee jest.json"
+    command: /bin/sh -c "/code/node_modules/.bin/jest --json | tee jest.json"
     volumes:
       # bind mount a directory to share the output of the test runner
       - type: bind
