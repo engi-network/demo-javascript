@@ -3,17 +3,9 @@ version: "3.9"
 services:
   tests:
     build: .
-    command: ./run.sh
+    command: /bin/sh -c "./node_modules/.bin/jest --json | tee jest.json"
     volumes:
-      # share the source code for live reloading
-      - .:/code
-      # prevent the host's node_modules from being mounted in the container
-      - exclude:/code/node_modules
-      # bind mount /tmp from the host to share the output of Jest
+      # bind mount a directory to share the output of the test runner
       - type: bind
-        source: ${TMPDIR}
-        target: ${TMPDIR}
-    environment:
-      - TMPDIR=/tmp
-volumes:
-  exclude:
+        source: .
+        target: /code
