@@ -2,6 +2,10 @@
 
 Skeleton project demonstrating Javascript and Jest on the Engi network.
 
+Engi expects a `tests` compose service to complete with a compatible JSON output
+file written. Docker will swallow piped `command`s so we wrap it in quotes and
+invoke it the bash binary.
+
 ## Install
 
 `npm install`
